@@ -8,30 +8,17 @@ from django.core.paginator import Paginator
 
 # Create your views here.
 
-#buscador
-def buscador(request):
-    queryset = request.GET.get("buscar")
-    if queryset:
-        productos = Post.objects.filter(
-            Q(nombre__icontains = queryset) |
-            Q(precio__icontains = queryset)
-        ).distinct()
-    return render(request,'index.html',{'productos':productos})
-
-
-
-
 
 #Productos
 
 def product_detail(request, producto_id):
     productos = Producto.objects.get(id = producto_id)
-    return render(request, 'Catalogo/product_detail.html', {'productos': productos})
+    return render(request, 'product_detail.html', {'productos': productos})
 
 #lista de productos
 def product_list(request):
     productos = Producto.objects.all()
-    return render(request, 'Catalogo/product_list.html', {'productos': productos})
+    return render(request, 'product_list.html', {'productos': productos})
 
 #formulario crear producto
 def product_new(request):
@@ -42,7 +29,7 @@ def product_new(request):
 
     else:
         formproducto = ProductForm()
-    return render(request, 'Catalogo/product_edit.html', {'formproducto': formproducto})
+    return render(request, 'product_edit.html', {'formproducto': formproducto})
 
 
 
@@ -50,7 +37,7 @@ def product_new(request):
 #lista de fabricas
 def fabric_list(request):
     fabricas = Fabrica.objects.all()
-    return render(request, 'Catalogo/fabric_list.html', {'fabricas': fabricas})
+    return render(request, 'fabric_list.html', {'fabricas': fabricas})
 
 
 #formulario crear fabrica
@@ -61,7 +48,7 @@ def fabric_new(request):
             formfabric.save()
     else:
         formfabric = FabricForm()
-    return render(request, 'Catalogo/fabric_edit.html', {'formfabric': formfabric})
+    return render(request, 'fabric_edit.html', {'formfabric': formfabric})
 
 
 
@@ -69,7 +56,7 @@ def fabric_new(request):
 #listas de vehiculos
 def vehiculo_list(request):
    vehiculos = Vehiculo.objects.all()
-   return render(request, 'Catalogo/vehiculo_list.html', {'vehiculos': vehiculos})
+   return render(request, 'vehiculo_list.html', {'vehiculos': vehiculos})
 
 #formulario crear producto
 def vehiculo_new(request):
@@ -79,14 +66,14 @@ def vehiculo_new(request):
             formvehiculo.save()
     else:
         formvehiculo = VehiculoForm()
-    return render(request, 'Catalogo/vehiculo_edit.html', {'formvehiculo': formvehiculo})
+    return render(request, 'vehiculo_edit.html', {'formvehiculo': formvehiculo})
 
 
 #Compatibilidad
 #Lista de compatibles
 def compatible_list(request):
    compatibilidad = Relacion.objects.all()
-   return render(request, 'Catalogo/Compatibilidad.html', {'compatibilidad': compatibilidad})
+   return render(request, 'Compatibilidad.html', {'compatibilidad': compatibilidad})
 
 
 
@@ -97,4 +84,4 @@ def nueva_compatibilidad(request):
             formcomp.save()
     else:
         formcomp = RelacionForm()
-    return render(request, 'Catalogo/compatibilidad_edit.html', {'formcomp': formcomp})
+    return render(request, 'compatibilidad_edit.html', {'formcomp': formcomp})
