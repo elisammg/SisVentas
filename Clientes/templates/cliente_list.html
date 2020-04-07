@@ -3,12 +3,8 @@
 {% block content %}
 <body>
     <div class="page-header">
-    <a href="{% url 'product_list' %}" class="btn btn-primary">Productos</span></a>
-    <a href="{% url 'vehiculo_list' %}" class="btn btn-primary">Vehiculos</span></a>
-    <a href="{% url 'fabric_list' %}" class="btn btn-primary">Fabricas</span></a>
-    <a href="{% url 'compatibilidad_list' %}" class="btn btn-primary">Compatibilidad</span></a>
-    <h2>Lista de productos y carros compatibles</h2>
-    <a href="{% url 'comp_new' %}" class="top-menu">Nuevo<span class="glyphicon glyphicon-plus"></span></a>
+    <h2>Lista de Clientes</h2>
+    <a href="{% url 'clientes_new' %}" class="top-menu">Nuevo<span class="glyphicon glyphicon-plus"></span></a>
     </div>
      <form method="get">
         <div id="custom-search-input">
@@ -21,18 +17,26 @@
 <table class="table">
         <thead>
         <tr>
+            <th>Id</th>
+            <th>NIT</th>
             <th>Nombre</th>
-            <th>Vehiculo</th>
-            <th>Repuesto</th>
+            <th>Email</th>
+            <th>Telefono</th>
+            <th>Patente</th>
+            <th>Tipo de Cliente</th>
             <th>Acciones</th>
         </tr>
         </thead>
         <tbody>
-            {% for compatibilidad in compatibilidad %}
+            {% for cliente in clientes %}
             <tr>
-                <td>{{compatibilidad.relacion}}</td>
-                <td>{{compatibilidad.carro}}</td>
-                <td>{{compatibilidad.repuesto}}</td>
+                <td>{{cliente.id}}</td>
+                <td>{{cliente.nit}}</td>
+                <td>{{cliente.nombre}}</td>
+                <td>{{cliente.email}}</td>
+                <td>{{cliente.telefono}}</td>
+                <td>{{cliente.patente}}</td>
+                <td>{{cliente.tipo}}</td>
                 <td>
                     <a class="btn btn-warning">Editar</a>
                     <a class="btn btn-danger">Eliminar</a>
@@ -41,4 +45,6 @@
             {% endfor %}
         </tbody>
 </table>
+
+
 {% endblock %}

@@ -3,12 +3,8 @@
 {% block content %}
 <body>
     <div class="page-header">
-    <a href="{% url 'product_list' %}" class="btn btn-primary">Productos</span></a>
-    <a href="{% url 'vehiculo_list' %}" class="btn btn-primary">Vehiculos</span></a>
-    <a href="{% url 'fabric_list' %}" class="btn btn-primary">Fabricas</span></a>
-    <a href="{% url 'compatibilidad_list' %}" class="btn btn-primary">Compatibilidad</span></a>
     <h2>Lista de productos y carros compatibles</h2>
-    <a href="{% url 'comp_new' %}" class="top-menu">Nuevo<span class="glyphicon glyphicon-plus"></span></a>
+    <a href="{% url 'suscripcion_new' %}" class="top-menu">Nuevo<span class="glyphicon glyphicon-plus"></span></a>
     </div>
      <form method="get">
         <div id="custom-search-input">
@@ -21,18 +17,22 @@
 <table class="table">
         <thead>
         <tr>
-            <th>Nombre</th>
-            <th>Vehiculo</th>
-            <th>Repuesto</th>
+            <th>Id</th>
+            <th>Estado</th>
+            <th>Fecha de creacion</th>
+            <th>Fecha de caducidad</th>
+            <th>Cliente</th>
             <th>Acciones</th>
         </tr>
         </thead>
         <tbody>
-            {% for compatibilidad in compatibilidad %}
+            {% for suscripcion in suscripciones %}
             <tr>
-                <td>{{compatibilidad.relacion}}</td>
-                <td>{{compatibilidad.carro}}</td>
-                <td>{{compatibilidad.repuesto}}</td>
+                <td>{{suscripcion.id}}</td>
+                <td>{{suscripcion.estado}}</td>
+                <td>{{suscripcion.fecha_creacion}}</td>
+                <td>{{suscripcion.fecha_expiracion}}</td>
+                <td>{{suscripcion.cliente}}</td>
                 <td>
                     <a class="btn btn-warning">Editar</a>
                     <a class="btn btn-danger">Eliminar</a>

@@ -5,11 +5,32 @@
     </head>
     <body>
 <div class="container">
-        <h1><a href="/">Clientes</a></h1>
+        <h1><a href="/clientes/clientes">Clientes</a></h1>
+
+    <a href="{% url 'clientes_list' %}" class="btn btn-primary">Clientes</span></a>
+    <a href="{% url 'descuentos' %}" class="btn btn-primary">Descuentos</span></a>
+    <a href="{% url 'suscripciones' %}" class="btn btn-primary">Suscripciones</span></a>
     </div>
     <div class="container mt-4">
             {% block content %}
             {% endblock %}
     </div>
     </body>
+<!-- Footer -->
+<footer class="page-footer font-small blue">
+<hr>
+  <!-- Copyright -->
+  <div class="footer-copyright text-center py-3">
+    <p>Elisa Monzon</p>
+    <br>
+    <a href="{% url 'product_list' %}" class="btn btn-primary">Productos</span></a>    
+    <a href="{% url 'clientes_list' %}" class="btn btn-primary">Clientes</span></a>
+    <br>
+    © 2020 Copyright: <a href="https://mdbootstrap.com/"> MDBootstrap.com</a>   
+    
+  </div>
+  <!-- Copyright -->
+
+</footer>
+<!-- Footer -->
 </html>
