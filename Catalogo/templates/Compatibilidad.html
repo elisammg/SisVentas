@@ -3,8 +3,8 @@
 {% block content %}
 <body>
     <div class="page-header">
-        <a href="{% url 'comp_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
     <h2>Lista de productos y carros compatibles</h2>
+    <a href="{% url 'comp_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
     </div>
      <form method="get">
         <div id="custom-search-input">
@@ -14,11 +14,28 @@
             </div>
         </div>
     </form>
-    <ul>
-    {% for compatibilidad in compatibilidad %}
-    	<b><li>NOMBRE: {{compatibilidad.relacion}}</li></b>
-        <p>Vehiculo: {{compatibilidad.carro}}</p>
-        <p>Repuesto: {{compatibilidad.repuesto}}</p>
-    {% endfor %}
-    </ul>
+<table class="table">
+        <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Vehiculo</th>
+            <th>Repuesto</th>
+            <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for compatibilidad in compatibilidad %}
+            <tr>
+                <td>{{compatibilidad.relacion}}</td>
+                <td>{{compatibilidad.carro}}</td>
+                <td>{{compatibilidad.repuesto}}</td>
+                <td>
+                    <a class="btn btn-warning">Editar</a>
+                    <a class="btn btn-danger">Eliminar</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+</table>
 {% endblock %}
+
