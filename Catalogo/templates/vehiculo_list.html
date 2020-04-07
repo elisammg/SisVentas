@@ -1,0 +1,24 @@
+{% extends 'Catalogo/base.html' %}
+
+{% block content %}
+<body>
+    <div class="page-header">
+        <a href="{% url 'vehiculo_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+    <h2>Lista de vehiculos</h2>
+    </div>
+     <form method="get">
+        <div id="custom-search-input">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Buscar..." name="buscar" value = "{{ request.GET.buscar }}">
+                <button type="submit" class="boton btn-success">Buscar</button>
+            </div>
+        </div>
+    </form>
+    <ul>
+    {% for vehiculo in vehiculos %}
+    	<li>MARCA: {{vehiculo.marca}}</li>
+        <p>LINEA: {{vehiculo.linea}}</p>
+        <p>MODELO: {{vehiculo.modelo}}</p>
+    {% endfor %}
+    </ul>
+{% endblock %}

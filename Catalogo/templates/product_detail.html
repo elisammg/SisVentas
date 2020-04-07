@@ -1,0 +1,14 @@
+{% extends 'Catalogo/base.html' %}
+
+{% block content %}
+    <div class="post">
+    <ul>
+
+    	<b><li>NOMBRE: {{producto.nombre}}</li></b>
+        <p>PRECIO: Q{{producto.precio}}</p>
+        <p>DESCRIPCION: {{producto.descripcion}}</p>
+        <p>FABRICANTE: {{producto.fabricante}}</p>
+
+    </ul>
+    </div>
+{% endblock %}

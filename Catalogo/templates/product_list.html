@@ -1,0 +1,26 @@
+{% extends 'Catalogo/base.html' %}
+
+{% block content %}
+<body>
+    <div class="page-header">
+        <a href="{% url 'product_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+    <h2>Lista de productos</h2>
+    </div>
+     <form method="get">
+        <div id="custom-search-input">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Buscar..." name="buscar" value = "{{ request.GET.buscar }}">
+                <button type="submit" class="boton btn-success">Buscar</button>
+            </div>
+        </div>
+    </form>
+    <ul>
+    {% for producto in productos %}
+    	<b><li><a href="/product/{{ producto.id }}" class="btn btn-success"><span class="glyphicon glyphicon-eye-open"></span></a>
+        NOMBRE: {{producto.nombre}}</li></b>
+        <p>PRECIO: Q{{producto.precio}}</p>
+        <p>DESCRIPCION: {{producto.descripcion}}</p>
+        <p>FABRICANTE: {{producto.fabricante}}</p>
+    {% endfor %}
+    </ul>
+{% endblock %}

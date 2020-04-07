@@ -1,0 +1,24 @@
+{% extends 'Catalogo/base.html' %}
+
+{% block content %}
+<body>
+    <div class="page-header">
+        <a href="{% url 'comp_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+    <h2>Lista de productos y carros compatibles</h2>
+    </div>
+     <form method="get">
+        <div id="custom-search-input">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Buscar..." name="buscar" value = "{{ request.GET.buscar }}">
+                <button type="submit" class="boton btn-success">Buscar</button>
+            </div>
+        </div>
+    </form>
+    <ul>
+    {% for compatibilidad in compatibilidad %}
+    	<b><li>NOMBRE: {{compatibilidad.relacion}}</li></b>
+        <p>Vehiculo: {{compatibilidad.carro}}</p>
+        <p>Repuesto: {{compatibilidad.repuesto}}</p>
+    {% endfor %}
+    </ul>
+{% endblock %}
