@@ -3,8 +3,12 @@
 {% block content %}
 <body>
     <div class="page-header">
-        <a href="{% url 'fabric_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+    <a href="{% url 'product_list' %}" class="btn btn-primary">Productos</span></a>
+    <a href="{% url 'vehiculo_list' %}" class="btn btn-primary">Vehiculos</span></a>
+    <a href="{% url 'fabric_list' %}" class="btn btn-primary">Fabricas</span></a>
+    <a href="{% url 'compatibilidad_list' %}" class="btn btn-primary">Compatibilidad</span></a>
     <h2>Lista de Fabricas</h2>
+    <a href="{% url 'fabric_new' %}" class="top-menu">Nuevo<span class="glyphicon glyphicon-plus"></span></a>
     </div>
      <form method="get">
         <div id="custom-search-input">
@@ -14,10 +18,29 @@
             </div>
         </div>
     </form>
-    <ul>
-    {% for fabrics in fabricas %}
-    	<li>NOMBRE: {{fabrics.nombre}}</li>
-        <p>UBICACION: {{fabrics.ubicacion}}</p>
-    {% endfor %}
-    </ul>
+<table class="table">
+        <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Ubicacion</th>
+            <th>IP</th>
+            <th>Puerto de Conexion</th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for fabrics in fabricas %}
+            <tr>
+                <td>{{fabrics.nombre}}</td>
+                <td>{{fabrics.ubicacion}}</td>
+                <td>{{fabrics.IP}}</td>
+                <td>{{fabrics.puerto_conexion}}</td>
+                <td>
+                    <a class="btn btn-warning">Editar</a>
+                    <a class="btn btn-danger">Eliminar</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+</table>
 {% endblock %}
+

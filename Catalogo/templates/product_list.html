@@ -3,8 +3,12 @@
 {% block content %}
 <body>
     <div class="page-header">
-        <a href="{% url 'product_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+    <a href="{% url 'product_list' %}" class="btn btn-primary">Productos</span></a>
+    <a href="{% url 'vehiculo_list' %}" class="btn btn-primary">Vehiculos</span></a>
+    <a href="{% url 'fabric_list' %}" class="btn btn-primary">Fabricas</span></a>
+    <a href="{% url 'compatibilidad_list' %}" class="btn btn-primary">Compatibilidad</span></a>
     <h2>Lista de productos</h2>
+     <a href="{% url 'product_new' %}" class="top-menu">Nuevo<span class="glyphicon glyphicon-plus"></span></a>
     </div>
      <form method="get">
         <div id="custom-search-input">
@@ -14,13 +18,31 @@
             </div>
         </div>
     </form>
-    <ul>
-    {% for producto in productos %}
-    	<b><li><a href="/product/{{ producto.id }}" class="btn btn-success"><span class="glyphicon glyphicon-eye-open"></span></a>
-        NOMBRE: {{producto.nombre}}</li></b>
-        <p>PRECIO: Q{{producto.precio}}</p>
-        <p>DESCRIPCION: {{producto.descripcion}}</p>
-        <p>FABRICANTE: {{producto.fabricante}}</p>
-    {% endfor %}
-    </ul>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Precio</th>
+            <th>Descripcion</th>
+            <th>Fabricante</th>
+            <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+           {% for producto in productos %}
+            <tr>
+                <td>{{producto.nombre}}</td>
+                <td>Q{{producto.precio}}</td>
+                <td>{{producto.descripcion}}</td>
+                <td>{{producto.fabricante}}</td>
+                <td>
+                    <a href="/product/{{ producto.id }}" class="btn btn-success"><span class="glyphicon glyphicon-eye-open"></span></a>
+                    <a class="btn btn-warning">Editar</a>
+                    <a class="btn btn-danger">Eliminar</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+</table>
 {% endblock %}
+

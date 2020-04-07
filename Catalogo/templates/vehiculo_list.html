@@ -3,8 +3,12 @@
 {% block content %}
 <body>
     <div class="page-header">
-        <a href="{% url 'vehiculo_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+    <a href="{% url 'product_list' %}" class="btn btn-primary">Productos</span></a>
+    <a href="{% url 'vehiculo_list' %}" class="btn btn-primary">Vehiculos</span></a>
+    <a href="{% url 'fabric_list' %}" class="btn btn-primary">Fabricas</span></a>
+    <a href="{% url 'compatibilidad_list' %}" class="btn btn-primary">Compatibilidad</span></a>
     <h2>Lista de vehiculos</h2>
+    <a href="{% url 'vehiculo_new' %}" class="top-menu">Nuevo<span class="glyphicon glyphicon-plus"></span></a>
     </div>
      <form method="get">
         <div id="custom-search-input">
@@ -14,11 +18,28 @@
             </div>
         </div>
     </form>
-    <ul>
-    {% for vehiculo in vehiculos %}
-    	<li>MARCA: {{vehiculo.marca}}</li>
-        <p>LINEA: {{vehiculo.linea}}</p>
-        <p>MODELO: {{vehiculo.modelo}}</p>
-    {% endfor %}
-    </ul>
+<table class="table">
+        <thead>
+        <tr>
+            <th>Marca</th>
+            <th>Linea</th>
+            <th>Modelo</th>
+            <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for vehiculo in vehiculos %}
+            <tr>
+                <td>{{vehiculo.marca}}</td>
+                <td>{{vehiculo.linea}}</td>
+                <td>{{vehiculo.modelo}}</td>
+                <td>
+                    <a class="btn btn-warning">Editar</a>
+                    <a class="btn btn-danger">Eliminar</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+</table>
 {% endblock %}
+
