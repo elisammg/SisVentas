@@ -31,13 +31,13 @@ def factura_new(request):
 #Facturas detalle
 def factura_detalle(request):
     if request.method == "POST":
-        formfacturadetail = DetalleFacturaForm(request.POST)
-        if formfacturadetail.is_valid():
-            formfacturadetail.save()
+        formdetail = DetalleForm(request.POST)
+        if formdetail.is_valid():
+            formdetail.save()
 
     else:
-        formfacturadetail = DetalleFacturaForm()
-    return render(request, 'factura_detalle.html', {'formfacturadetail': formfacturadetail})
+        formdetail = DetalleForm()
+    return render(request, 'factura_detalle.html', {'formdetail': formdetail})
 
 
 
@@ -46,8 +46,5 @@ def factura_detail(request):
     return render(request, 'factura_detail.html', {'facturasdetail': facturasdetail})
 
 
-#necesita id
-def factura_detalle(request):
-    facturadetalle = DetalleFactura.objects.all()
-    return render(request, 'factura_detalle.html', {'facturadetalle': facturadetalle})
+
 

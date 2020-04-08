@@ -10,11 +10,12 @@
             </div>
 
     <form method="POST" class="post-form">{% csrf_token %}
-        {{ formfacturadetail.as_p }}
+        {{ formdetail.as_p }}
         <button type="submit" class="btn btn-success">Save</button>
     </form>
     
     <a href="{% url 'factura_new' %}" class="btn btn-primary">Regresar</span></a>
+    <a href="{% url 'factura_detail' %}" class="btn btn-warning">Listado Detalle</span></a>
    </div>
 </div>
 {% endblock %}
