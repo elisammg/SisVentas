@@ -1,12 +1,24 @@
 from django import forms
-
 from .models import Producto, Fabrica, Vehiculo, Relacion
+
+
 
 class ProductForm(forms.ModelForm):
 
     class Meta:
         model = Producto
-        fields = ('nombre', 'descripcion', 'cantidad', 'precio', 'no_parte', 'fabricante',)
+        
+        fields = {
+            'nombre': forms.Textarea,
+            'descripcion': forms.Textarea,
+            'cantidad': forms.NumberInput,
+            'precio_compra': forms.NumberInput,
+            'precio': forms.NumberInput,
+            'no_parte': forms.NumberInput,
+            'fabricante': forms.Select, 
+            'iva': forms.NumberInput,
+
+        }
 
 
 class RelacionForm(forms.ModelForm):

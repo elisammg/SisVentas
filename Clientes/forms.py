@@ -16,9 +16,3 @@ class SuscripcionForm(forms.ModelForm):
         fields = ('estado', 'fecha_creacion', 'fecha_expiracion', 'cliente',)
 
 
-class DescuentoForm(forms.ModelForm):
-
-    class Meta:
-        model = objeto
-        fields = ('nombre', 'descripcion',)
-
