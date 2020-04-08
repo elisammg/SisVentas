@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'base2.html' %}
 
 {% block content %}
 <body>
@@ -6,15 +6,16 @@
 <div class="container mt-4">
      <div class="card">
             <div class="card-header">
-            	<h2>Agregar Compatibilidad</h2>
+            	<h2>Facturar</h2>
 			</div>
 
     <form method="POST" class="post-form">{% csrf_token %}
-        {{ formcomp.as_p }}
+        {{ formfactura.as_p }}
         <button type="submit" class="btn btn-success">Save</button>
     </form>
     
-    <a href="{% url 'compatibilidad_list' %}" class="btn btn-primary">Regresar</span></a>
+    <a href="{% url 'facturas_list' %}" class="btn btn-primary">Regresar</span></a>
+    <a href="{% url 'factura_detalle' %}" class="btn btn-primary">Detalle</span></a>
    </div>
 </div>
 {% endblock %}

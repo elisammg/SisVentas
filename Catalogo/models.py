@@ -42,10 +42,8 @@ class Producto(models.Model):
         return self.nombre
 
     def preciototal(self):
-        precio_total=self.precio_compra*self.cantidad
+        precio_total = self.precio_compra * self.cantidad
         return precio_total
-
-
 
 
     def incrementarcantidad(self, *args, **kwargs):
@@ -55,11 +53,9 @@ class Producto(models.Model):
         super(Producto, self).save(*args, **kwargs)
 
 
-
-
     def save(self, *args, **kwargs):
         if self.precio:
-            self.iva = round(float(self.precio)*TAX_VALUE, 3)
+            self.iva = round(float(self.precio) * TAX_VALUE, 3)
             super(Producto, self).save(*args, **kwargs)
         else:
             self.iva=0

@@ -7,7 +7,7 @@ from django.db import models
 
 class cliente (models.Model):
 	TIPO = (
-			('mayorisat', 'Mayorista'),
+			('mayorista', 'Mayorista'),
 			('taller', 'Taller'),
 			('individual', 'Individual'),
 		)

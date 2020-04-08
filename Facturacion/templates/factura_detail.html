@@ -1,0 +1,44 @@
+{% extends 'base2.html' %}
+
+{% block content %}
+<body>
+    <div class="page-header">
+    <h2>Facturas</h2>
+    <a href="{% url 'factura_new' %}" class="top-menu">Nueva factura<span class="glyphicon glyphicon-plus"></span></a>
+    </div>
+     <form method="get">
+        <div id="custom-search-input">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Buscar..." name="buscar" value = "{{ request.GET.buscar }}">
+                <button type="submit" class="boton btn-success">Buscar</button>
+            </div>
+        </div>
+    </form>
+<table class="table">
+        <thead>
+        <tr>
+            <th>Factura</th>
+            <th>Producto</th>
+            <th>Descripcion</th>
+            <th>Precio</th>
+            <th>Cantidad vendida</th>
+            <th>Impuesto</th>
+            <th>subtotal</th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for facturadetail in facturasdetail %}
+            <tr>
+                <td>{{facturadetail.factura}}</td>
+                <td>{{facturadetail.producto}}</td>
+                <td>{{facturadetail.descripcion}}</td>
+                <td>{{facturadetail.precio}}</td>
+                <td>{{facturadetail.cantidad_venta}}</td>
+                <td>{{facturadetail.impuesto}}</td> 
+                <td>{{facturadetail.subtotal}}</td>               
+            </tr>
+            {% endfor %}
+        </tbody>
+</table>
+<a class="btn btn-success" href="{% url 'facturas_list' %}">Regresar</a>
+{% endblock %}

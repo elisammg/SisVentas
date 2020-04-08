@@ -1,10 +1,10 @@
-{% extends 'base.html' %}
+{% extends 'base2.html' %}
 
 {% block content %}
 <body>
     <div class="page-header">
-    <h2>Lista de productos</h2>
-     <a href="{% url 'product_new' %}" class="top-menu">Nuevo<span class="glyphicon glyphicon-plus"></span></a>
+    <h2>Facturas</h2>
+    <a href="{% url 'factura_new' %}" class="top-menu">Nueva factura<span class="glyphicon glyphicon-plus"></span></a>
     </div>
      <form method="get">
         <div id="custom-search-input">
@@ -14,27 +14,29 @@
             </div>
         </div>
     </form>
-    <table class="table">
+<table class="table">
         <thead>
         <tr>
-            <th>Id</th>
-            <th>Nombre</th>
-            <th>Precio</th>
-            <th>Descripcion</th>
-            <th>Fabricante</th>
+            <th>Serie</th>
+            <th>Numero</th>
+            <th>Nit</th>
+            <th>Fecha</th>
+            <th>Total</th>
+            <th>Vendedor</th>
             <th>Acciones</th>
         </tr>
         </thead>
         <tbody>
-           {% for producto in productos %}
+            {% for factura in facturas %}
             <tr>
-                <td>{{producto.id}}</td>
-                <td>{{producto.nombre}}</td>
-                <td>Q{{producto.precio}}</td>
-                <td>{{producto.descripcion}}</td>
-                <td>{{producto.fabricante}}</td>
+                <td>{{factura.serie}}</td>
+                <td>{{factura.numero}}</td>
+                <td>{{factura.nit}}</td>
+                <td>{{factura.fecha}}</td>
+                <td>{{factura.total}}</td>
+                <td>{{factura.vendedor}}</td>
                 <td>
-                    <a href="/product/{{ producto.id }}" class="btn btn-success"><span class="glyphicon glyphicon-eye-open"></span></a>
+                    <a class="btn btn-success" href="{% url 'factura_detail' %}">Detalle</a>
                     <a class="btn btn-warning">Editar</a>
                     <a class="btn btn-danger">Eliminar</a>
                 </td>
@@ -43,5 +45,3 @@
         </tbody>
 </table>
 {% endblock %}
-
-
