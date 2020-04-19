@@ -34,7 +34,7 @@ class Producto(models.Model):
     precio_compra = models.DecimalField(max_digits=6, decimal_places=2, default=0.00)
     precio= models.DecimalField(max_digits=6, decimal_places=2, default=0.00)
     no_parte = models.IntegerField(default=0, unique = True)
-    fabricante = models.ForeignKey(Fabrica, on_delete=models.PROTECT)
+    fabricante = models.ForeignKey(Fabrica, on_delete=models.CASCADE)
     iva = models.DecimalField(max_digits=6, decimal_places=3, default=0.000)
 
 
@@ -65,7 +65,7 @@ class Producto(models.Model):
 
 class Relacion(models.Model):
     relacion = models.CharField(max_length=200)
-    carro = models.ForeignKey(Vehiculo, on_delete=models.PROTECT, default="")
-    repuesto = models.ForeignKey(Producto, on_delete=models.PROTECT, default = "")
+    carro = models.ForeignKey(Vehiculo, on_delete=models.CASCADE, default="")
+    repuesto = models.ForeignKey(Producto, on_delete=models.CASCADE, default = "")
     def _str_(self):
         return self.relacion

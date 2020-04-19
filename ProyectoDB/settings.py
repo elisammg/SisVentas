@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'Catalogo.apps.CatalogoConfig',
     'Clientes.apps.ClientesConfig',
-    'Facturacion.apps.FacturacionConfig',
+    'Facturacion.apps.FacturacionConfig',    
+    'Users.apps.UsersConfig',
 ]
 
 MIDDLEWARE = [
@@ -117,6 +118,7 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
 
 
 # Static files (CSS, JavaScript, Images)

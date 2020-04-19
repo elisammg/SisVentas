@@ -30,7 +30,7 @@ class suscripcion(models.Model):
 	estado = models.CharField(choices = ESTADO, max_length=50)
 	fecha_expiracion = models.DateField()
 	fecha_creacion = models.DateField()
-	cliente = models.ForeignKey(cliente, on_delete=models.PROTECT)
+	cliente = models.ForeignKey(cliente, on_delete=models.CASCADE)
 	def unicode (self):
 		return self.estado
 	

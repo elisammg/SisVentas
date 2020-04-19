@@ -16,10 +16,10 @@ from django.utils import timezone
 class Factura(models.Model):
     serie = models.IntegerField()
     numero = models.CharField(max_length=6)
-    nit = models.ForeignKey(cliente, on_delete= models.PROTECT)
+    nit = models.ForeignKey(cliente, on_delete= models.CASCADE)
     fecha = models.DateField(auto_now_add = True)
     total = models.DecimalField(max_digits=8, decimal_places=2, null=True, blank=True)
-    vendedor = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.PROTECT)
+    vendedor = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 
 
 
@@ -37,8 +37,8 @@ class Factura(models.Model):
 
 
 class DetalleFactura(models.Model):
-    factura = models.ForeignKey(Factura, db_column='factura_id', related_name='factura', on_delete=models.PROTECT)
-    producto = models.ForeignKey(Producto, db_column='producto_id', on_delete=models.PROTECT)
+    factura = models.ForeignKey(Factura, db_column='factura_id', related_name='factura', on_delete=models.CASCADE)
+    producto = models.ForeignKey(Producto, db_column='producto_id', on_delete=models.CASCADE)
     descripcion = models.CharField(max_length=50)
     precio = models.DecimalField(max_digits=6, decimal_places=2)
     cantidad_venta = models.IntegerField()
