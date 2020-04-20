@@ -5,6 +5,8 @@ from django.shortcuts import redirect
 from .forms import *
 from django.db.models import Q
 from django.core.paginator import Paginator
+from rest_framework import viewsets
+from .serializers import VehiculoSerializer
 
 # Create your views here.
 
@@ -85,3 +87,11 @@ def nueva_compatibilidad(request):
     else:
         formcomp = RelacionForm()
     return render(request, 'compatibilidad_edit.html', {'formcomp': formcomp})
+
+
+
+
+#REST
+class VehiculosViewSet (viewsets.ModelViewSet):
+    queryset = Vehiculo.objects.all().order_by('marca')
+    serializer_class = VehiculoSerializer

@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'Clientes.apps.ClientesConfig',
     'Facturacion.apps.FacturacionConfig',    
     'Users.apps.UsersConfig',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [

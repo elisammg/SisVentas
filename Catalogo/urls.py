@@ -1,6 +1,12 @@
-from django.urls import path
+from django.urls import include, path
 from django.contrib.auth.decorators import login_required
+from rest_framework import routers
 from . import views
+
+
+router = routers.DefaultRouter()
+router.register(r'vehiculo', views.VehiculosViewSet)
+
 
 urlpatterns = [
 
@@ -13,5 +19,6 @@ urlpatterns = [
     path('product/<int:producto_id>/', login_required(views.product_detail), name='product_detail'),
     path('compatibilidad/', login_required(views.compatible_list), name='compatibilidad_list'),
     path('compatibilidad/new', login_required(views.nueva_compatibilidad), name='comp_new'),
-    #path('', views.login, name='login'),
+    path('rt', include(router.urls)),
+    path('rtcar', include('rest_framework.urls', namespace='rest_framework')),
 ]
