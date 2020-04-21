@@ -20,5 +20,4 @@ urlpatterns = [
     path('compatibilidad/', login_required(views.compatible_list), name='compatibilidad_list'),
     path('compatibilidad/new', login_required(views.nueva_compatibilidad), name='comp_new'),
     path('rt', include(router.urls)),
-    path('rtcar', include('rest_framework.urls', namespace='rest_framework')),
 ]
