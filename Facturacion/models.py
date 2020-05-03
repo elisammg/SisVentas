@@ -21,15 +21,8 @@ class Factura(models.Model):
     total = models.DecimalField(max_digits=8, decimal_places=2, null=True, blank=True)
     vendedor = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 
-
-
-    class Meta:
-        unique_together = (('serie', 'numero'),)
-
-
-
-    def __unicode__(self):
-        return (self.serie, self.numero)
+    def __str__(self):
+        return 'Factura: ' + self.numero
 
 
 
@@ -45,18 +38,12 @@ class DetalleFactura(models.Model):
     impuesto = models.DecimalField(max_digits=6, decimal_places=2)
     subtotal = models.DecimalField(max_digits=6, decimal_places=2)
 
-    def __unicode__(self):
-        return u'%s' % self.descripcion
-
-    def suma(self):
-        return self.cantidad_venta * self.producto.precio
+    def __str__(self):
+        return 'Destalle de Factura: ' + self.descripcion
 
 
-def update_stock(sender, instance, **kwargs):
-    instance.producto.cantidad -= instance.cantidad_venta
-    instance.producto.save()
 
-signals.post_save.connect(update_stock, sender=DetalleFactura, dispatch_uid="update_stock_count")
+
 
 
 

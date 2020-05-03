@@ -18,8 +18,10 @@ class cliente (models.Model):
 	telefono = models.IntegerField(verbose_name='Telefono')
 	patente = models.CharField(max_length=60)
 	tipo = models.CharField(choices = TIPO, max_length = 50)
-	def unicode (self):
-		return self.nombre
+
+	def __str__(self):
+		return 'Cliente: ' + self.nombre
+
 		
 			
 class suscripcion(models.Model):
@@ -31,10 +33,8 @@ class suscripcion(models.Model):
 	fecha_expiracion = models.DateField()
 	fecha_creacion = models.DateField()
 	cliente = models.ForeignKey(cliente, on_delete=models.CASCADE)
-	def unicode (self):
-		return self.estado
 	
-	def estadosuscripcion(self):
-		hoy = datetime.date.today()
-		dias = (self.fecha_expiracion - hoy).days
-		return dias
+
+	def __str__(self):
+		return 'Suscripcion: ' + self.estado
+	
