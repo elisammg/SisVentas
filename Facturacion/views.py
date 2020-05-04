@@ -48,3 +48,42 @@ def factura_detail(request):
 
 
 
+
+
+
+#Pedidos a Fabrica
+def pedidos_list(request):
+    pedido = Pedidos.objects.all()
+    return render(request, 'pedidos.html', {'pedido': pedido})
+
+
+
+#formulario crear factura
+def pedido_new(request):
+    if request.method == "POST":
+        formpedido = PedidosForm(request.POST)
+        if formpedido.is_valid():
+            formpedido.save()
+
+    else:
+        formpedido = PedidosForm()
+    return render(request, 'pedir.html', {'formpedido': formpedido})
+
+
+
+#Facturas detalle
+def pedido_detalle(request):
+    if request.method == "POST":
+        formpd = DetallePForm(request.POST)
+        if formpd.is_valid():
+            formpd.save()
+
+    else:
+        formpd = DetallePForm()
+    return render(request, 'pedido_detalle.html', {'formpd': formpd})
+
+
+
+def pedido_detail(request):
+    pdetail = DetallePedidos.objects.all()
+    return render(request, 'pedido_detail.html', {'pdetail': pdetail})

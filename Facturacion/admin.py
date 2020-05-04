@@ -20,3 +20,21 @@ class FacturaAdmin(admin.ModelAdmin):
 			obj.vendedor = request.user
 		obj.save()
 admin.site.register(Factura, FacturaAdmin)
+
+
+#Pedidos a Fabrica
+class DetallePedidoInline(admin.TabularInline):
+	model = DetallePedidos
+
+
+
+
+class PedidosAdmin(admin.ModelAdmin):
+
+	raw_id_fields = ('fabrica',)
+	inlines = (DetallePedidoInline,)
+
+	def save_model(self, request, obj, form, change):
+		obj.save()
+admin.site.register(Pedidos, PedidosAdmin)
+

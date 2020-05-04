@@ -43,6 +43,41 @@ class DetalleFactura(models.Model):
 
 
 
+#Pedidos
+
+
+class Pedidos(models.Model):
+    ESTADO = (
+        ('enviado', 'Enviado'),
+        ('proceso', 'Proceso'),
+        ('entregado', 'Entregado'),
+        )   
+    fabrica = models.ForeignKey(Fabrica, on_delete= models.CASCADE)
+    fecha_envio = models.DateField(auto_now_add = True)
+    fecha_entrega = models.DateField(auto_now_add = False)
+    estado = models.CharField(choices = ESTADO, max_length=50)
+    total = models.DecimalField(max_digits=8, decimal_places=2, null=True, blank=True)
+
+    def __str__(self):
+        return 'Pedidos: ' + self.fabrica
+
+
+
+
+
+
+class DetallePedidos(models.Model):
+    pedido = models.ForeignKey(Pedidos, db_column='pedidos_id', related_name='pedidios', on_delete=models.CASCADE)
+    producto = models.ForeignKey(Producto, db_column='producto_id', on_delete=models.CASCADE)
+    descripcion = models.CharField(max_length=50)
+    cantidad_pedido = models.IntegerField()
+    subtotal = models.DecimalField(max_digits=6, decimal_places=2)
+
+    def __str__(self):
+        return 'Destalle de Pedidos: ' + self.descripcion
+
+
+
 
 
 

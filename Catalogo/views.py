@@ -1,10 +1,11 @@
 from django.shortcuts import render, get_object_or_404
 from django.utils import timezone
-from .models import *
+from django.views.generic.edit import UpdateView, DeleteView
 from django.shortcuts import redirect
-from .forms import *
 from django.db.models import Q
 from django.core.paginator import Paginator
+from .models import *
+from .forms import *
 from rest_framework import viewsets
 from .serializers import VehiculoSerializer
 
@@ -32,6 +33,44 @@ def product_new(request):
     else:
         formproducto = ProductForm()
     return render(request, 'product_edit.html', {'formproducto': formproducto})
+
+
+
+#Editar productos
+class ProductosUpdate(UpdateView): 
+    # specify the model you want to use 
+    model = Producto 
+    
+    fields = [ 
+        "nombre",
+        "descripcion",
+        "cantidad",
+        "precio",
+        "no_parte",
+        "fabricante",
+    ]
+
+    success_url ="/tienda/productos"
+
+
+
+
+#Eliminar producto
+class ProductoDelete(DeleteView): 
+    # specify the model you want to use 
+    model = Producto 
+      
+    # can specify success url 
+    # url to redirect after sucessfully 
+    # deleting object 
+    success_url ="/tienda/productos"
+
+
+
+
+
+
+
 
 
 

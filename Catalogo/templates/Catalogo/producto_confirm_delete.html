@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<body>
+
+<div class="container mt-4">
+     <div class="card">
+            <div class="card-header">
+            	<h2>Eliminar</h2>
+			</div>
+
+
+
+<form method="post">{% csrf_token %} 
+    <p>Are you sure you want to delete "{{ object }}"?</p> 
+    <input type="submit" value="Confirm"> 
+</form> 
+
+
+    <a href="{% url 'compatibilidad_list' %}" class="btn btn-primary">Regresar</span></a>
+   </div>
+</div>
+{% endblock %}
