@@ -16,7 +16,7 @@ class cliente (models.Model):
 	nombre = models.CharField(max_length=60)
 	email = models.CharField(max_length=60)
 	telefono = models.IntegerField(verbose_name='Telefono')
-	patente = models.CharField(max_length=60)
+	patente = models.ImageField(upload_to='images/')
 	tipo = models.CharField(choices = TIPO, max_length = 50)
 
 	def __str__(self):

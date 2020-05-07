@@ -1,10 +1,15 @@
 from django.shortcuts import render, get_object_or_404
 from django.utils import timezone
+from . import forms
+from django.views.generic.edit import UpdateView, DeleteView
+from django.views.generic import ListView, CreateView # new
+from django.urls import reverse_lazy # new
 from .models import *
 from django.shortcuts import redirect
 from .forms import *
 from django.db.models import Q
 from django.core.paginator import Paginator
+
 
 # Create your views here.
 
@@ -16,16 +21,44 @@ def clientes_list(request):
     clientes = cliente.objects.all()
     return render(request, 'cliente_list.html', {'clientes': clientes})
 
-#formulario crear cliente
-def clientes_new(request):
-    if request.method == "POST":
-        formclientes = ClienteForm(request.POST)
-        if formclientes.is_valid():
-            formclientes.save()
 
-    else:
-        formclientes = ClienteForm()
-    return render(request, 'cliente_edit.html', {'formclientes': formclientes})
+class CreateClienteView(CreateView): # new
+    model = cliente
+    form_class = ClienteForm
+    template_name = 'cliente_edit.html'
+    success_url = reverse_lazy('cliente_list')
+
+
+
+#Editar Clientes
+class ClientesUpdate(UpdateView): 
+    # specify the model you want to use 
+    model = cliente 
+    
+    fields = [
+        "nit",
+        "nombre",
+        "email",
+        "telefono",
+        "patente",
+        "tipo",
+    ]
+
+    success_url ="clientes/"
+
+
+#Eliminar Clientes
+class ClienteDelete(DeleteView): 
+    # specify the model you want to use 
+    model = cliente 
+      
+    # can specify success url 
+    # url to redirect after sucessfully 
+    # deleting object 
+    success_url ="clientes/"
+
+
+
 
 
 
@@ -45,6 +78,32 @@ def suscripcion_new(request):
     else:
         formsusc = SuscripcionForm()
     return render(request, 'suscripcion_new.html', {'formsusc': formsusc})
+
+
+#Editar Clientes
+class suscripcionsUpdate(UpdateView): 
+    # specify the model you want to use 
+    model = suscripcion 
+    
+    fields = [ 
+        "estado",
+        "fecha_expiracion",
+        "fecha_creacion",
+        "cliente",
+    ]
+
+    success_url ="clientes/"
+
+
+#Eliminar Clientes
+class suscripcionDelete(DeleteView): 
+    # specify the model you want to use 
+    model = suscripcion
+      
+    # can specify success url 
+    # url to redirect after sucessfully 
+    # deleting object 
+    success_url ="clientes/"    
 
 
 

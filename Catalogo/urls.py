@@ -22,7 +22,13 @@ urlpatterns = [
     path('compatibilidad/new', login_required(views.nueva_compatibilidad), name='comp_new'),
     path('rt', include(router.urls)),
     path('rtcar', include('rest_framework.urls', namespace='rest_framework')),
-    path('<pk>/update', ProductosUpdate.as_view()), 
-    path('<pk>/delete/', ProductoDelete.as_view()),
+    path('<pk>/updatepro', ProductosUpdate.as_view()), 
+    path('<pk>/deletepro/', ProductoDelete.as_view()),
+    path('<pk>/updatefab', FabricasUpdate.as_view()), 
+    path('<pk>/deletefab/', FabricaDelete.as_view()),
+    path('<pk>/updateveh', VehiculosUpdate.as_view()), 
+    path('<pk>/deleteveh/', VehiculoDelete.as_view()),
+    path('<pk>/updatere', RelacionsUpdate.as_view()), 
+    path('<pk>/deletere/', RelacionDelete.as_view()),
 
 ]

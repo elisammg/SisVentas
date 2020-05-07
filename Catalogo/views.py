@@ -69,11 +69,6 @@ class ProductoDelete(DeleteView):
 
 
 
-
-
-
-
-
 #Fabricas
 #lista de fabricas
 def fabric_list(request):
@@ -92,6 +87,37 @@ def fabric_new(request):
     return render(request, 'fabric_edit.html', {'formfabric': formfabric})
 
 
+#Editar fabrica
+class FabricasUpdate(UpdateView): 
+    # specify the model you want to use 
+    model = Fabrica 
+    
+    fields = [ 
+        "nombre",
+        "ubicacion",
+        "IP",
+        "puerto_conexion",
+    ]
+
+    success_url ="/tienda/fabrica/list"
+
+
+
+
+#Eliminar fabrica
+class FabricaDelete(DeleteView): 
+    # specify the model you want to use 
+    model = Fabrica 
+      
+    # can specify success url 
+    # url to redirect after sucessfully 
+    # deleting object 
+    success_url ="/tienda/fabrica/list"
+
+
+
+
+
 
 #Vehiculos
 #listas de vehiculos
@@ -108,6 +134,42 @@ def vehiculo_new(request):
     else:
         formvehiculo = VehiculoForm()
     return render(request, 'vehiculo_edit.html', {'formvehiculo': formvehiculo})
+
+
+
+#Editar Vehiculo
+class VehiculosUpdate(UpdateView): 
+    # specify the model you want to use 
+    model = Vehiculo 
+    
+    fields = [ 
+        "marca",
+        "linea",
+        "modelo",
+        "codigo_universal",
+    ]
+
+    success_url ="/tienda/vehiculo/list"
+
+
+
+
+#Eliminar Vehiculo
+class VehiculoDelete(DeleteView): 
+    # specify the model you want to use 
+    model = Vehiculo 
+      
+    # can specify success url 
+    # url to redirect after sucessfully 
+    # deleting object 
+    success_url ="/tienda/vehiculo/list"
+
+
+
+
+
+
+
 
 
 #Compatibilidad
@@ -134,3 +196,32 @@ def nueva_compatibilidad(request):
 class VehiculosViewSet (viewsets.ModelViewSet):
     queryset = Vehiculo.objects.all().order_by('marca')
     serializer_class = VehiculoSerializer
+
+
+
+#Editar Relacion
+class RelacionsUpdate(UpdateView): 
+    # specify the model you want to use 
+    model = Relacion 
+    
+    fields = [ 
+        "marca",
+        "linea",
+        "modelo",
+        "codigo_universal",
+    ]
+
+    success_url ="/tienda/compatibilidad/"
+
+
+
+
+#Eliminar Vehiculo
+class RelacionDelete(DeleteView): 
+    # specify the model you want to use 
+    model = Relacion 
+      
+    # can specify success url 
+    # url to redirect after sucessfully 
+    # deleting object 
+    success_url ="/tienda/compatibilidad/"
