@@ -19,8 +19,14 @@ def product_detail(request, producto_id):
     return render(request, 'product_detail.html', {'productos': productos})
 
 #lista de productos
-def product_list(request):
+def product_list(request):    
     productos = Producto.objects.all()
+    queryset = request.GET.get("buscar")
+    print(queryset)
+    if queryset:
+        productos = Producto.objects.filter(
+            Q(nombre__icontains = queryset)
+            ).distinct()
     return render(request, 'product_list.html', {'productos': productos})
 
 #formulario crear producto

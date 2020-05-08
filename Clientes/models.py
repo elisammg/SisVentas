@@ -5,6 +5,7 @@ from django.db import models
 
 
 
+
 class cliente (models.Model):
 	TIPO = (
 			('mayorista', 'Mayorista'),
@@ -22,6 +23,7 @@ class cliente (models.Model):
 	def __str__(self):
 		return 'Cliente: ' + self.nombre
 
+
 		
 			
 class suscripcion(models.Model):
@@ -37,4 +39,9 @@ class suscripcion(models.Model):
 
 	def __str__(self):
 		return 'Suscripcion: ' + self.estado
+
+	menostaller = 0.10
+	menosmayorista = 0.25
+
+	
 	

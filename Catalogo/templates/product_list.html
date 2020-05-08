@@ -6,14 +6,16 @@
     <h2>Lista de productos</h2>
      <a href="{% url 'product_new' %}" class="top-menu">Nuevo<span class="glyphicon glyphicon-plus"></span></a>
     </div>
+
      <form method="get">
         <div id="custom-search-input">
             <div class="input-group">
                 <input type="text" class="form-control" placeholder="Buscar..." name="buscar" value = "{{ request.GET.buscar }}">
-                <button type="submit" class="boton btn-success">Buscar</button>
+                <button type="submit" class="btn btn-success">Buscar</button>
             </div>
         </div>
     </form>
+
     <table class="table">
         <thead>
         <tr>
