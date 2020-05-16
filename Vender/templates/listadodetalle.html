@@ -1,0 +1,34 @@
+{% extends 'base3.html' %}
+
+{% block content %}
+<body>
+    <div class="page-header">
+    <h2>Ordenes de Compra</h2>
+    <a href="{% url 'nuevaorden' %}" class="top-menu">Nueva Orden<span class="glyphicon glyphicon-plus"></span></a>
+    <a href="{% url 'cobrar' %}" class="top-menu">Cobrar<span class="glyphicon glyphicon-plus"></span></a>
+    </div>
+    
+<table class="table">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Orden</th>
+            <th>Cantidad</th>
+            <th>Subtotal</th>
+            <th>Descripcion</th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for detalle in detalles %}
+            <tr>
+                <td>{{detalle.id}}</td>
+                <td>{{detalle.orden}}</td>                
+                <td>{{detalle.cantidad}}</td>
+                <td>{{detalle.valor}}</td>                
+                <td>{{detalle.descripcion}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+</table>
+{% endblock %}
+

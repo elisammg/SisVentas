@@ -1,0 +1,41 @@
+{% extends 'base4.html' %}
+
+{% block content %}
+<body>
+    <div class="page-header">
+    <h2>Pedidos a Fabricas</h2>
+    <a href="{% url 'nuevopedido' %}" class="top-menu">Nuevo Pedido<span class="glyphicon glyphicon-plus"></span></a>
+    </div>
+     <form method="get">
+        <div id="custom-search-input">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Buscar..." name="buscar" value = "{{ request.GET.buscar }}">
+                <button type="submit" class="boton btn-success">Buscar</button>
+            </div>
+        </div>
+    </form>
+<table class="table">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Fabrica</th>
+            <th>Fecha de realizado</th>            
+            <th>Descripcion</th>
+            <th>Agregar Productos</th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for pedido in pedidos %}
+            <tr>
+                <td>{{pedido.id}}</td>
+                <td>{{pedido.fabrica}}</td>                
+                <td>{{pedido.fecha_pedido}}</td>                
+                <td>{{pedido.descripcion}}</td>
+                <td>
+                    <a href="{% url 'detallarpedido' %}" class="top-menu">Agregar productos<span class="glyphicon glyphicon-plus"></span></a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+</table>
+{% endblock %}

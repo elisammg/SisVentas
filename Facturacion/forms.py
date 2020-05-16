@@ -6,14 +6,14 @@ class FacturaForm(forms.ModelForm):
 
     class Meta:
         model = Factura 
-        fields = ('serie', 'numero', 'nit', 'total', 'vendedor',)
+        fields = ('serie', 'numero', 'nit', 'vendedor',)
         
 
 class DetalleForm(forms.ModelForm):
 
 	class Meta:
 		model = DetalleFactura
-		fields = ('factura', 'producto', 'descripcion', 'precio', 'cantidad_venta', 'impuesto', 'subtotal',)
+		fields = ('factura', 'producto', 'descripcion', 'precio', 'cantidad_venta', 'impuesto')
 
 
 
@@ -31,4 +31,4 @@ class DetallePForm(forms.ModelForm):
 
 	class Meta:
 		model = DetallePedidos
-		fields = ('pedido', 'producto', 'descripcion', 'cantidad_pedido', 'subtotal',)
+		fields = ('pedido', 'producto', 'descripcion', 'cantidad_pedido',)

@@ -6,4 +6,3 @@ from .models import *
 admin.site.register(Vehiculo)
 admin.site.register(Fabrica)
 admin.site.register(Producto)
-admin.site.register(Relacion)

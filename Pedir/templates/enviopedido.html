@@ -1,0 +1,31 @@
+{% extends 'base4.html' %}
+
+{% block content %}
+
+    <h3>Envios de Fabrica</h3>
+<table class="table">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Fechas</th>
+            <th>Repuestos</th>
+            <th>Cantidad</th>
+            <th>Precio a pagar</th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for apipedido in apipedidos %}
+            <tr>
+                <td>{{apipedido.id}}</td>
+                <td>{{apipedido.fecha_recibido}} x
+                {{apipedido.fecha_entrega}}</td>
+                <td>{{apipedido.repuestos}}</td>
+                <td>{{apipedido.cantidad}}</td>
+                <td>{{apipedido.precio_final}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+</table>
+<a href="{% url 'product_new' %}" class="btn btn-warning">Dar de Alta Productos Nuevos</a>
+<a href="/tienda/productos" class="btn btn-warning">Actualizar inventario</a>
+{% endblock %}

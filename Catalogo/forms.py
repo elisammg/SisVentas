@@ -1,5 +1,5 @@
 from django import forms
-from .models import Producto, Fabrica, Vehiculo, Relacion
+from .models import Producto, Fabrica, Vehiculo
 
 
 
@@ -13,19 +13,12 @@ class ProductForm(forms.ModelForm):
             'descripcion': forms.Textarea,
             'cantidad': forms.NumberInput,
             'precio_compra': forms.NumberInput,
-            'precio': forms.NumberInput,
             'no_parte': forms.NumberInput,
-            'fabricante': forms.Select, 
-            'iva': forms.NumberInput,
+            'fabricante': forms.Select,
+            'vehiculo': forms.Select,
 
         }
 
-
-class RelacionForm(forms.ModelForm):
-
-    class Meta:
-        model = Relacion
-        fields = ('relacion', 'carro', 'repuesto',)
 
 
 class FabricForm(forms.ModelForm):

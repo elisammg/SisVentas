@@ -1,7 +1,10 @@
 from django.shortcuts import render, get_object_or_404
 from django.utils import timezone
 from django.views.generic.edit import UpdateView, DeleteView
-from django.shortcuts import redirect
+from django.shortcuts import redirect, render
+import urllib.request as ur
+import json
+from django.views.generic import TemplateView
 from django.db.models import Q
 from django.core.paginator import Paginator
 from .models import *
@@ -171,33 +174,6 @@ class VehiculoDelete(DeleteView):
     success_url ="/tienda/vehiculo/list"
 
 
-
-
-
-
-
-
-
-#Compatibilidad
-#Lista de compatibles
-def compatible_list(request):
-   compatibilidad = Relacion.objects.all()
-   return render(request, 'Compatibilidad.html', {'compatibilidad': compatibilidad})
-
-
-
-def nueva_compatibilidad(request):
-    if request.method == "POST":
-        formcomp = RelacionForm(request.POST)
-        if formcomp.is_valid():
-            formcomp.save()
-    else:
-        formcomp = RelacionForm()
-    return render(request, 'compatibilidad_edit.html', {'formcomp': formcomp})
-
-
-
-
 #REST
 class VehiculosViewSet (viewsets.ModelViewSet):
     queryset = Vehiculo.objects.all().order_by('marca')
@@ -205,29 +181,20 @@ class VehiculosViewSet (viewsets.ModelViewSet):
 
 
 
-#Editar Relacion
-class RelacionsUpdate(UpdateView): 
-    # specify the model you want to use 
-    model = Relacion 
-    
-    fields = [ 
-        "marca",
-        "linea",
-        "modelo",
-        "codigo_universal",
-    ]
+def consumeAPI(request):
+    url = "http://192.168.1.30:8080/rtproductos"
+    response = ur.urlopen(url)
+    datas = json.loads(response.read())
 
-    success_url ="/tienda/compatibilidad/"
+    return render(request, 'productosapi.html', {'datas' : datas})
 
 
+def APIcarro(request):
+    urlcarro = "http://192.168.1.30:8080/carroapi"
+    responsecarro = ur.urlopen(urlcarro)
+    carros = json.loads(responsecarro.read())
+
+    return render(request, 'carrosapi.html', {'carros' : carros})
 
 
-#Eliminar Vehiculo
-class RelacionDelete(DeleteView): 
-    # specify the model you want to use 
-    model = Relacion 
-      
-    # can specify success url 
-    # url to redirect after sucessfully 
-    # deleting object 
-    success_url ="/tienda/compatibilidad/"
+

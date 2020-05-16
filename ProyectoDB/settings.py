@@ -39,7 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'Catalogo.apps.CatalogoConfig',
     'Clientes.apps.ClientesConfig',
-    'Facturacion.apps.FacturacionConfig',    
+    'Facturacion.apps.FacturacionConfig',
+    'Vender.apps.VenderConfig',
+    'Pedir.apps.PedirConfig',    
     'Users.apps.UsersConfig',
     'rest_framework',
 ]
@@ -110,9 +112,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'en-GT'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Guatemala'
 
 USE_I18N = True
 
@@ -131,3 +133,10 @@ STATIC_URL = '/static/'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+#Mail
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.sendgrid.net'
+EMAIT_PORT = 587
+EMAIL_HOST_USER = 'apikey'
+EMAIL_HOST_PASSWORD = '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'

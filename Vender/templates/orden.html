@@ -1,0 +1,33 @@
+{% extends 'base3.html' %}
+
+{% block content %}
+<body>
+    <div class="page-header">
+    <h2>Ordenes de Compra</h2>
+    <a href="{% url 'nuevaorden' %}" class="top-menu">Nueva Orden<span class="glyphicon glyphicon-plus"></span></a>
+    <a href="{% url 'cobrar' %}" class="top-menu">Cobrar<span class="glyphicon glyphicon-plus"></span></a>
+    </div>
+    
+<table class="table">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Cliente</th>
+            <th>Vendedor</th>
+            <th>Agregar Productos</th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for orden in ordenes %}
+            <tr>
+                <td>{{orden.id}}</td>
+                <td>{{orden.cliente}}</td>                
+                <td>{{orden.vendedor}}</td>
+                <td>
+                    <a href="{% url 'agregardetalle' %}" class="top-menu">Agregar productos<span class="glyphicon glyphicon-plus"></span></a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+</table>
+{% endblock %}

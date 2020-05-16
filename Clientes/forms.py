@@ -13,6 +13,6 @@ class SuscripcionForm(forms.ModelForm):
 
     class Meta:
         model = suscripcion
-        fields = ('estado', 'fecha_creacion', 'fecha_expiracion', 'cliente',)
+        fields = ('cliente', 'fecha_expiracion', 'precio')
 
 

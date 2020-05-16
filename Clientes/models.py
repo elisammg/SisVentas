@@ -1,5 +1,8 @@
 from django.utils import timezone
+from django.utils.timezone import datetime
 from django.db import models
+from datetime import date
+from datetime import datetime
 
 # Create your models here.
 
@@ -27,21 +30,30 @@ class cliente (models.Model):
 		
 			
 class suscripcion(models.Model):
-	ESTADO = (
-		('activa', 'Activa'),
-		('inactiva', 'Inactiva'),
-		)	
-	estado = models.CharField(choices = ESTADO, max_length=50)
-	fecha_expiracion = models.DateField()
-	fecha_creacion = models.DateField()
+	estado = models.CharField(max_length=50)
+	fecha_expiracion = models.DateField(auto_now_add = False)
+	fecha_creacion = models.DateField(auto_now_add = True)
 	cliente = models.ForeignKey(cliente, on_delete=models.CASCADE)
+	precio = models.DecimalField(max_digits=6, decimal_places=2, default=0.00)
 	
 
 	def __str__(self):
 		return 'Suscripcion: ' + self.estado
 
-	menostaller = 0.10
-	menosmayorista = 0.25
+
+	def function(self):
+		self.estado = 'prueba'
+		return self.estado
+
+
+
+
+
+
+
+
+
+
 
 	
 	

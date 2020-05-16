@@ -21,10 +21,11 @@
         <tr>
             <th>Id</th>
             <th>Nombre</th>
-            <th>Precio</th>
+            <th>Precio Venta</th>
             <th>Descripcion</th>
             <th>Cantidad</th>
             <th>Fabricante</th>
+            <th>Vehiculo compatible</th>
             <th>Acciones</th>
         </tr>
         </thead>
@@ -33,10 +34,11 @@
             <tr>
                 <td>{{producto.id}}</td>
                 <td>{{producto.nombre}}</td>
-                <td>Q{{producto.precio}}</td>
+                <td>Q{{producto.preciofinal}}</td>
                 <td>{{producto.descripcion}}</td>                
                 <td>{{producto.cantidad}}</td>
                 <td>{{producto.fabricante}}</td>
+                <td>{{producto.vehiculo}}</td>
                 <td>
                     <a class="btn btn-warning">Editar</a>
                     <a class="btn btn-danger">Eliminar</a>

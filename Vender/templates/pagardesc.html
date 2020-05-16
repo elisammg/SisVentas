@@ -1,0 +1,35 @@
+{% extends 'base3.html' %}
+
+{% block content %}
+<body>
+    <div class="page-header">
+    <h2>Pagos con descuento de Temporada</h2>
+    <a href="{% url 'nuevaorden' %}" class="top-menu">Nueva Orden<span class="glyphicon glyphicon-plus"></span></a>
+    <a href="{% url 'cobrar' %}" class="top-menu">Cobrar<span class="glyphicon glyphicon-plus"></span></a>
+    </div>
+    
+<table class="table">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Cliente</th>
+            <th>Factura</th>
+            <th>Porcentaje</th>
+            <th>Descripcion</th>            
+            <th>Total</th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for pagodesc in pagodescs %}
+            <tr>
+                <td>{{pagodesc.id}}</td>
+                <td>{{pagodesc.factura}}</td> 
+                <td>{{pagodesc.cliente_nit}}</td>                
+                <td>{{pagodesc.porcentaje}}</td>                                
+                <td>{{pagodesc.descripcion}}</td>
+                <td>{{pagodesc.promocion}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+</table>
+{% endblock %}

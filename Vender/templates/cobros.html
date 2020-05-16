@@ -1,0 +1,39 @@
+{% extends 'base3.html' %}
+
+{% block content %}
+<body>
+    <div class="page-header">
+    <h2>Ordenes de Compra</h2>
+    <a href="{% url 'cobrar' %}" class="top-menu">Cobrar<span class="glyphicon glyphicon-plus"></span></a>
+    <a href="{% url 'descuento' %}" class="top-menu">Descuento de Temporada<span class="glyphicon glyphicon-plus"></span></a>
+    </div>
+
+<table class="table">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Cliente</th>
+            <th>Orden</th>
+            <th>Fecha</th>
+            <th>Descripcion</th>            
+            <th>Individual</th>            
+            <th>Mayorista</th>
+            <th>Taller</th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for factura in facturas %}
+            <tr>
+                <td>{{factura.id}}</td>
+                <td>{{factura.cliente_nit}}</td>
+                <td>{{factura.orden}}</td>
+                <td>{{factura.fecha}}</td>
+                <td>{{factura.descripcion}}</td>                
+                <td>{{factura.total}}</td>
+                <td>{{factura.mayorista}}</td>
+                <td>{{factura.taller}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+</table>
+{% endblock %}

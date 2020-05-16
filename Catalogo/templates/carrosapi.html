@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Consumir APIS</h2>
+<table class="table">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Codigo Universal</th>
+            <th>Marca</th>
+            <th>Linea</th>
+            <th>Modelo</th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for carro in carros %}
+            <tr>
+                <td>{{carro.id}}</td>
+                <td>{{carro.codigo_universal}}</td>
+                <td>{{carro.marca}}</td>
+                <td>{{carro.linea}}</td>
+                <td>{{carro.modelo}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+</table>
+{% endblock %}

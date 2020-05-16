@@ -6,12 +6,13 @@
 </head>
 <body>
 <h2>Iniciar sesión</h2>
-
+<div class="container">
 <form method="POST">
     {{ form.as_p }}
     {% csrf_token %}
     <button type="submit">Login</button>
 </form>
+</div>
 
 <hr>
 <a href="/register">Registrar usuario</a>

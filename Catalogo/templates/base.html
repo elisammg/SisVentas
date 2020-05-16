@@ -7,11 +7,15 @@
 <div class="container">
         <h1><a href="/">Catalogo</a></h1>
         <a href="/logout">Cerrar sesión</a>
-        <br>
-    <a href="{% url 'product_list' %}" class="btn btn-primary">Productos</span></a>
-    <a href="{% url 'vehiculo_list' %}" class="btn btn-primary">Vehiculos</span></a>
-    <a href="{% url 'fabric_list' %}" class="btn btn-primary">Fabricas</span></a>
-    <a href="{% url 'compatibilidad_list' %}" class="btn btn-primary">Compatibilidad</span></a>
+    <hr>
+    <a href="{% url 'product_list' %}" class="btn btn-primary">Productos</span></a>    
+    <a href="{% url 'clientes_list' %}" class="btn btn-primary">Clientes</span></a>       
+    <a href="{% url 'ordenes' %}" class="btn btn-primary">Vender</span></a>
+    <a href="{% url 'pedidos' %}" class="btn btn-primary">Pedidos</span></a>
+    <hr>
+    <a href="{% url 'product_list' %}" class="btn btn-info">Productos</span></a>
+    <a href="{% url 'vehiculo_list' %}" class="btn btn-info">Vehiculos</span></a>
+    <a href="{% url 'fabric_list' %}" class="btn btn-info">Fabricas</span></a>
     </div>
     <div class="container mt-4">
             {% block content %}
@@ -24,10 +28,7 @@
   <!-- Copyright -->
   <div class="footer-copyright text-center py-3">
     <p>Elisa Monzon</p>
-    <br>
-    <a href="{% url 'product_list' %}" class="btn btn-primary">Productos</span></a>    
-    <a href="{% url 'clientes_list' %}" class="btn btn-primary">Clientes</span></a>       
-    <a href="{% url 'facturas_list' %}" class="btn btn-primary">Facturar</span></a>
+
     <br>
     © 2020 Copyright: <a href="https://mdbootstrap.com/"> MDBootstrap.com</a>   
     

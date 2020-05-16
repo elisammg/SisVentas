@@ -7,9 +7,14 @@
 <div class="container">
         <h1><a href="/clientes/clientes">Clientes</a></h1>
         <a href="/logout">Cerrar sesión</a>
-        <br>
-    <a href="{% url 'clientes_list' %}" class="btn btn-primary">Clientes</span></a>
-    <a href="{% url 'suscripciones' %}" class="btn btn-primary">Suscripciones</span></a>
+    <hr>
+    <a href="{% url 'product_list' %}" class="btn btn-primary">Productos</span></a>    
+    <a href="{% url 'clientes_list' %}" class="btn btn-primary">Clientes</span></a>       
+    <a href="{% url 'ordenes' %}" class="btn btn-primary">Vender</span></a>
+    <a href="{% url 'pedidos' %}"  class="btn btn-primary">Pedidos</span></a>
+    <hr>
+    <a href="{% url 'clientes_list' %}" class="btn btn-info">Clientes</span></a>
+    <a href="{% url 'suscripciones' %}" class="btn btn-info">Suscripciones</span></a>
     </div>
     <div class="container mt-4">
             {% block content %}
@@ -22,11 +27,6 @@
   <!-- Copyright -->
   <div class="footer-copyright text-center py-3">
     <p>Elisa Monzon</p>
-    <br>
-    <a href="{% url 'product_list' %}" class="btn btn-primary">Productos</span></a>    
-    <a href="{% url 'clientes_list' %}" class="btn btn-primary">Clientes</span></a>      
-    <a href="{% url 'facturas_list' %}" class="btn btn-primary">Facturar</span></a>
-    <br>
     © 2020 Copyright: <a href="https://mdbootstrap.com/"> MDBootstrap.com</a>   
     
   </div>

@@ -12,6 +12,7 @@ from django.utils import timezone
 
 
 
+#Factura
 
 class Factura(models.Model):
     serie = models.IntegerField()
@@ -43,9 +44,10 @@ class DetalleFactura(models.Model):
 
 
 
+
+
+
 #Pedidos
-
-
 class Pedidos(models.Model):
     ESTADO = (
         ('enviado', 'Enviado'),

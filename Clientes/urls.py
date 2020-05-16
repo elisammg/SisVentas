@@ -2,6 +2,7 @@ from django.urls import path
 from django.contrib.auth.decorators import login_required
 from . import views
 from .views import *
+from django.views.generic import TemplateView
 
 urlpatterns = [
 
@@ -15,5 +16,7 @@ urlpatterns = [
     path('<pk>/deletecl/', ClienteDelete.as_view()),
     path('<pk>/updatesus', suscripcionsUpdate.as_view()), 
     path('<pk>/deletesus/', suscripcionDelete.as_view(), name="delete_susc"),
+    path('mail', TemplateView.as_view(template_name="mail.html"), name='mail'),
+    path('mailsend/', views.SendFormEmail.as_view(), name='send_email'),
     
 ]

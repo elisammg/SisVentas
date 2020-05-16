@@ -1,6 +1,9 @@
 from django.db import models
+from django.utils.timezone import datetime
 from django.utils import timezone
 import decimal
+
+
 
 
 # Create your models here.
@@ -30,22 +33,22 @@ class Producto(models.Model):
     nombre = models.CharField(max_length=200)
     descripcion = models.CharField(max_length=200, default = 0)
     cantidad = models.IntegerField(default=0)
-    precio_compra = models.DecimalField(max_digits=6, decimal_places=2, default=0.00)
+    precio_compra = models.FloatField(default=0.00)
     precio= models.DecimalField(max_digits=6, decimal_places=2, default=0.00)
     no_parte = models.IntegerField(default=0, unique = True)
     fabricante = models.ForeignKey(Fabrica, on_delete=models.CASCADE)
-    iva = models.DecimalField(max_digits=6, decimal_places=3, default=0.000)
+    vehiculo = models.ForeignKey(Vehiculo, on_delete=models.CASCADE, default=0)
 
 
     def __str__(self):
         return 'Producto: ' + self.nombre
 
+    def preciofinal (self):
+        self.precio = (self.precio_compra + (self.precio_compra * 0.15) + (self.precio_compra*0.3) + (self.precio_compra*0.05) + (self.precio_compra*0.4)) + (self.precio_compra*0.12)
+        return self.precio
 
 
-class Relacion(models.Model):
-    relacion = models.CharField(max_length=200)
-    carro = models.ForeignKey(Vehiculo, on_delete=models.CASCADE, default="")
-    repuesto = models.ForeignKey(Producto, on_delete=models.CASCADE, default = "")
+        
 
-    def __str__(self):
-        return 'Relacion: ' + self.relacion
+
+

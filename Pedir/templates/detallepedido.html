@@ -1,0 +1,40 @@
+{% extends 'base4.html' %}
+
+{% block content %}
+<body>
+    <div class="page-header">
+    <h2>Productos pedidos a Fabrica</h2>
+    <a href="{% url 'nuevopedido' %}" class="top-menu">Nuevo Pedido<span class="glyphicon glyphicon-plus"></span></a>
+    <a href="{% url 'detallarpedido' %}" class="top-menu">Agregar detalle<span class="glyphicon glyphicon-plus"></span></a>
+    </div>
+     <form method="get">
+        <div id="custom-search-input">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Buscar..." name="buscar" value = "{{ request.GET.buscar }}">
+                <button type="submit" class="boton btn-success">Buscar</button>
+            </div>
+        </div>
+    </form>
+<table class="table">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Pedido</th>
+            <th>Producto</th>
+            <th>Cantidad</th>
+            <th>Descripcion</th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for detalle in detalles %}
+            <tr>
+                <td>{{detalle.id}}</td>
+                <td>{{detalle.pedido}}</td>                
+                <td>{{detalle.producto}}</td>
+                <td>{{detalle.cantidad}}</td>                
+                <td>{{detalle.descripcion}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+</table>
+{% endblock %}

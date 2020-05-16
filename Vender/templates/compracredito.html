@@ -1,0 +1,20 @@
+{% extends 'base3.html' %}
+
+{% block content %}
+<body>
+
+<div class="container mt-4">
+     <div class="card">
+            <div class="card-header">
+            	<h2>Cobrar</h2>
+			</div>
+
+    <form method="POST" class="post-form">{% csrf_token %}
+        {{ formfuturo.as_p }}
+        <button type="submit" class="btn btn-success">Save</button>
+    </form>
+    
+    <a href="{% url 'facturas' %}" class="btn btn-primary">Regresar</span></a>
+   </div>
+</div>
+{% endblock %}

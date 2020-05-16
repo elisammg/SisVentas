@@ -1,0 +1,28 @@
+{% extends 'base4.html' %}
+
+{% block content %}
+
+    <h3>Productos disponibles en fabrica</h3>
+<table class="table">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Descripcion</th>
+            <th>Carros</th>
+            <th>Precio</th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for data in datas %}
+            <tr>
+                <td>{{data.id}}</td>
+                <td>{{data.nombre}}</td>
+                <td>{{data.descripcion}}</td>
+                <td>{{data.carros}}</td>
+                <td>{{data.precio}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+</table>
+{% endblock %}
