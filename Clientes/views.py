@@ -30,7 +30,7 @@ class CreateClienteView(CreateView): # new
     model = cliente
     form_class = ClienteForm
     template_name = 'cliente_edit.html'
-    success_url = reverse_lazy('cliente_list')
+    success_url = reverse_lazy('clientes_list')
 
 
 

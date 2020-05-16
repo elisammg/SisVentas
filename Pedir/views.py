@@ -51,7 +51,7 @@ def detallarpedido(request):
 
 
 def consumeAPI(request):
-    url = "http://192.168.1.30:8080/rtproductos"
+    url = "http://192.168.1.33:8080/rtproductos"
     response = ur.urlopen(url)
     datas = json.loads(response.read())
 
@@ -60,7 +60,7 @@ def consumeAPI(request):
 
 
 def pedidosapi(request):
-    urlapi = "http://192.168.1.30:8080/pedidosapi"
+    urlapi = "http://192.168.1.33:8080/pedidosapi"
     responseapi = ur.urlopen(urlapi)
     apipedidos = json.loads(responseapi.read())
 
